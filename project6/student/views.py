@@ -39,11 +39,15 @@ def student_detail(request):
     data={
         'name':name,
         'age':25,
-        'collage':"HSCL",
+        'collage':"holker science collage",
         'subjects':l1,
         'marks':{'hindi':50,'english':28,'math':12},
         "product": p1,
-        "sum":c
+        "sum":c,
+        "mysum":"",
+        "intro":"hello everyone my name is chetan patel i am teacher",
+        "message":"<h1>this is safe syntax</h1>",
+        "d":False
     }
 
     return render(request,"student/home.html",data)

@@ -5,21 +5,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    p{
+        font-weight:600;
+        font-size:20px
+    }
+    </style>
 </head>
 
 <body>
     <h1>welcome to student dashboard</h1>
-    <p>my name is {{name}}</p>
-    <p>my age is {{age}}</p>
-    <p>my collage name is {{collage}}</p>
+    <p> {{d|yesno:"Yes,Inactive"}}</p>
+    <p>my name is {{name|upper}} = {{name|length}}</p>
+    <p>my age is {{age|linebreaks}} year only</p>
+    <p>my collage name is {{collage|truncatewords:1}}</p>
     <p>my subjects {{subjects}}</p>
-    <p>my subjects {{subjects.0}}</p>
+    <p>my subjects {{subjects.0|upper|slice:"1:4" }}</p>
     <p>my subjects {{subjects.1}}</p>
+    <p>my subjects {{subjects|first}}</p>
+    <p>my subjects {{subjects|last}}</p>
+    <p>my subjects {{subjects|join:" "}}</p>
+    <p>my subjects {{subjects|length}}</p>
     <p>my marks {{marks.hindi}}</p>
     <p>my marks {{marks.english}}</p>
     <p>my product {{product.color}}</p>
-    <p>my product {{product.price}}</p>
+    <p>my product {{product.price| add:"10"}}</p>
     <p>my sum {{sum}}</p>
+    <p>my sum {{mysum|default_if_none:"no data available"}}</p>
+    <p>my intro :->  {{intro|truncatechars:20}}</p>
+     my message:->  {{message|safe}}
+
+    {% comment %} 
+     hello  this 
+     is multline
+     comment
+    {% endcomment %}
+
+    {# this is single line comment #}
+    
+    {% autoescape off %}
+
+       <h1>my tag</h1>
+       {{message}}
+       {{message}}
+       {{message}}
+
+    {% endautoescape %}
+
+    {% if 20|divisibleby:2  %}
+      Number is even
+      <p>its para</p>
+    {% else %}
+    Numger is odd<br>
+    Numger is odd
+    {% endif %}
+
+   
+   
 </body>
 
 </html>

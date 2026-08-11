@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"> 
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    {% block title%}
+     my website
+    {% endblock %}
+    </title>
+     <link rel="stylesheet" href="{% static 'student/css/style.css' %}" />
+</head>  
+
+<body>
+    {% include "navbar.html" %}
+
+    {% block content %}  
+
+    {% endblock %}
+
+    <div class=footer>
+     <p>All rights reserved by hello wolrd institute</p>
+     <p>Thanks visit for website</p>
+    <div>
+  <script src="{% static 'student/js/app.js' %}" ></script>
+</body>
+
+</html>

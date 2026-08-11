@@ -1,6 +1,3 @@
 from django.test import TestCase
 
 # Create your tests here.
-l1=[3,4,5,6]
-for ele in l1:
-    print(ele*ele)

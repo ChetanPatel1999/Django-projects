@@ -10,10 +10,20 @@
         font-weight:600;
         font-size:20px
     }
+    .row1
+    {
+        background-color:lightblue;
+    }
+     .row2
+    {
+        background-color:orange;
+    }
     </style>
 </head>
 
 <body>
+    <h1>Date : {{datetime|date:"d M Y"}}</h1>
+    <h1>Time : {{datetime|time:"h:i:s A"}}</h1>
     <h1>welcome to student dashboard</h1>
     <p> {{d|yesno:"Yes,Inactive"}}</p>
     <p>my name is {{name|upper}} = {{name|length}}</p>
@@ -34,6 +44,7 @@
     <p>my sum {{mysum|default_if_none:"no data available"}}</p>
     <p>my intro :->  {{intro|truncatechars:20}}</p>
      my message:->  {{message|safe}}
+    <p>{{count}} student{{count|pluralize}}</p>
 
     {% comment %} 
      hello  this 
@@ -60,8 +71,70 @@
     Numger is odd
     {% endif %}
 
+   {% comment %} 
+   {% if count < 2 %}
+   <p>this is para1</p>
+   <p>this is para2</p>
+   {% endif %} 
+   {% endcomment %}
+
+   {% if "hindi" in subjects and 55 > 7  %}
+   <p>this is para1</p>
+   <p>this is para2</p>
+   {% else %}
+    <p>this is para3</p>
+    <p>this is para4</p>
+   {% endif %}
    
-   
+
+
+   {% comment %}
+    <ol type='a'>
+   {% for sub in subjects %}
+     <li>{{sub}}</li>
+   {% endfor %}
+   </ol> 
+   {% endcomment %}
+
+   {% comment %}
+    <ol type='a'>
+   {% for sub in subjects %}
+    {% if sub != "hindi"  %}
+     <li>{{sub}}</li>
+    {% endif %}
+   {% empty %}
+      <p>no subject found</p>
+   {% endfor %}
+   </ol> 
+   {% endcomment %}
+
+
+
+   {% comment %}   
+   {% for sub in subjects %}
+     <p> {{forloop.counter0}} {{sub}}</p>
+   {% endfor %} 
+   {% endcomment %}
+
+
+   {% with name_length=name|length %}
+
+      {{name_length}}
+
+   {% endwith %}
+
+ 
+   <table width="300px" style="text-align:center" border='1' cellspacing="0" cellpadding='10'>
+   <tr> <th>name</th><th>marks</th> </tr>
+   {% for sub , mark in marks.items %}
+      <tr class="{% cycle 'row1' 'row2' %}"  > <td>{{sub}}</td><td> {{mark}} </td> </tr>
+   {% endfor %}
+   </table>
+
+
+   {% verbatim %} 
+    {{ myname }} 
+  {% endverbatim %} 
 </body>
 
 </html>

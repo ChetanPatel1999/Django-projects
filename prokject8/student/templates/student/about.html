@@ -1,0 +1,35 @@
+{% extends "student/base.html" %}
+ {% block title %}
+           about
+  {% endblock title %}
+   {% block content %}
+   <h1>my about page</h1>
+
+
+    {% comment %}
+    
+    {% regroup students by dept as dept_list %}
+    {% for dept in dept_list  %}
+        <h2>{{dept.grouper}}</h2>
+        <ul>
+            {% for std in dept.list  %}
+                <li>{{std.name}}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %} 
+    {% endcomment %}
+
+    {{std}}
+
+   
+   {% widthratio std.totalObtainMarks std.totalMarks 100 as per %}
+
+     <h2>Percentage: {{ per }}</h2>
+   
+    
+   {% filter title %}
+         {{name}}
+         {{name}}
+   {% endfilter %} 
+
+  {% endblock content %}

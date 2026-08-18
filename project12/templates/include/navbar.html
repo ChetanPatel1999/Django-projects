@@ -1,0 +1,9 @@
+{% load static %}
+<header class="flex items-center position fixed w-full h-20 justify-between px-8 bg-white shadow-md">
+    <img class="h-20 w-20" src="{% static 'images/logo.png' %}" alt="Logo">
+        <ul class="flex gap-10 font-bold">
+            <li class="hover:text-blue-500"><a href="/">Home</a></li>
+            <li class="hover:text-blue-500"><a href="/about">About</a></li>
+            <li class="hover:text-blue-500"><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+</header>

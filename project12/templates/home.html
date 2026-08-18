@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+ {% load static %}
+{% block content %}
+    <div class="w-full h-screen">
+     <img class="w-full h-full object-cover" src="{% static 'images/hero.jpg' %}" alt="Home Image">
+    </div>
+    <div class="bg-gray-200 p-8">
+        <h1 class="text-2xl font-bold mb-4 text-center">Featured Projects</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-blue-200 p-4 shadow-md rounded-2xl">
+                <img class="w-full h-50 object-fit rounded-2xl" src="{% static 'images/project1.jpg' %}" alt="Project 1">
+                <h2 class="text-xl font-bold mt-4 text-center">Portfolio Project</h2>
+            </div>
+            <div class="bg-blue-200 p-4 shadow-md rounded-2xl">
+                <img class="w-full h-50 object-fit rounded-2xl" src="{% static 'images/project2.jpg' %}" alt="Project 2">
+                <h2 class="text-xl font-bold mt-4 text-center">E-commerce Website</h2>
+            </div>  
+            <div class="bg-blue-200 p-4 shadow-md rounded-2xl">
+                <img class="w-full h-50 object-fit rounded-2xl" src="{% static 'images/project3.jpg' %}" alt="Project 3">
+                <h2 class="text-xl font-bold mt-4 text-center">Blog Platform</h2>
+            </div>  
+            <div class="bg-blue-200 p-4 shadow-md rounded-2xl">
+                <img class="w-full h-50 object-fit rounded-2xl" src="{% static 'images/project4.jpg' %}" alt="Project 4">
+                <h2 class="text-xl font-bold mt-4 text-center">Social Media App</h2>
+        </div>
+    </div>
+{% endblock %}

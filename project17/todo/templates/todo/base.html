@@ -10,8 +10,10 @@
     <div class="mx-auto  h-screen">
             
         <nav class="bg-gray-100 px-20 py-3  mb-4 flex justify-between items-center">
-           <h1 class="text-lg font-bold">Todo App</h1>
-           <a href="#" class="text-white bg-blue-600 px-3 py-2 rounded-md font-bold">Add Task</a>
+           <a href="{% url 'todo:show_tasks' %}" class="text-2xl font-bold text-gray-800">
+            <h1 class="text-2xl font-bold text-gray-800">Todo App</h1>
+              </a>
+           <a href="{% url 'todo:add_task' %}" class="text-white bg-blue-600 px-3 py-2 rounded-md font-bold">Add Task</a>
         </nav>
 
        <div class="px-20">

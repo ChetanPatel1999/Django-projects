@@ -21,3 +21,25 @@ def add_task(request):
             return redirect('todo:show_tasks')
         return render(request, 'todo/add_task.html', {'error': 'Please provide both title and description.'})   
     return render(request, 'todo/add_task.html')
+
+def delete_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('todo:show_tasks')
+    return render(request, 'todo/confirm_delete.html', {'task': task})
+
+def edit_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id)
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        completed = request.POST.get('completed') == 'on'
+        if title and description:
+            task.title = title
+            task.description = description
+            task.completed = completed
+            task.save()
+            return redirect('todo:show_tasks')
+        return render(request, 'todo/add_task.html', {'task': task, 'error': 'Please provide both title and description.'})
+    return render(request, 'todo/add_task.html', {'task': task})

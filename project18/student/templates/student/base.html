@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+<body>
+    <div>
+        <nav class="bg-blue-500 px-16 py-4">
+            <ul class="flex justify-between text-xl font-bold text-white">
+                <li><a href="{% url 'student:student_list' %}">Student List</a></li>
+                <li><a href="{% url 'student:student_create' %}">Create Student</a></li>
+            </ul>
+        </nav>
+      <div class="container px-16 py-4">
+        {% block content %}
+        {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

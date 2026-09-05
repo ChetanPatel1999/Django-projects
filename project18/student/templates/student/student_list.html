@@ -1,0 +1,14 @@
+{% extends "student/base.html" %}
+
+{% block content %}
+    <h1 class="text-2xl font-bold mb-4">Student List</h1>
+    <ul>
+        {% for student in students %}
+            <li class="mb-4 flex justify-start items-center space-x-4">
+                <a class="text-black font-bold hover:text-blue-700" href="#">{{ student.name }}</a>
+                <a class="bg-blue-500 text-white px-2 py-1 rounded" href="#">Edit</a> 
+                <a class="bg-blue-500 text-white px-2 py-1 rounded" href="#">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

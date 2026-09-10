@@ -9,6 +9,6 @@ class Student(models.Model):
     course = models.CharField(max_length=50,default=None) 
     fees = models.IntegerField(default=None) 
  
-    def __str__(self): 
+    def __str__(self):  
         return self.name
        

@@ -5,9 +5,9 @@
     <ul>
         {% for student in students %}
             <li class="mb-4 flex justify-start items-center space-x-4">
-                <a class="text-black font-bold hover:text-blue-700" href="#">{{ student.name }}</a>
-                <a class="bg-blue-500 text-white px-2 py-1 rounded" href="#">Edit</a> 
-                <a class="bg-blue-500 text-white px-2 py-1 rounded" href="#">Delete</a>
+                <a class="text-black font-bold hover:text-blue-700" href="{% url 'student:student_detail' student.id %}">{{ student.name }}</a>
+                <a class="bg-blue-500 text-white px-2 py-1 rounded" href="{% url 'student:student_update' student.id %}">Edit</a> 
+                <a class="bg-blue-500 text-white px-2 py-1 rounded" href="{% url 'student:student_delete' student.id %}">Delete</a>
             </li>
         {% endfor %}
     </ul>

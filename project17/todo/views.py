@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
+from django.contrib import messages
 from .models import Task
 # Create your views here.
 def show_tasks(request):
@@ -18,6 +19,7 @@ def add_task(request):
         description = request.POST.get('description')   
         if title and description:
             Task.objects.create(title=title, description=description)
+            messages.success(request, "Task added successfully.")
             return redirect('todo:show_tasks')
         return render(request, 'todo/add_task.html', {'error': 'Please provide both title and description.'})   
     return render(request, 'todo/add_task.html')
@@ -26,6 +28,7 @@ def delete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     if request.method == 'POST':
         task.delete()
+        messages.success(request, "Task deleted successfully.")
         return redirect('todo:show_tasks')
     return render(request, 'todo/confirm_delete.html', {'task': task})
 

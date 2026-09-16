@@ -14,7 +14,7 @@ def register(request):
             return redirect('login')
     else:
         form = RegistrationForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'account/register.html', {'form': form})
 
 def login_view(request):
     if request.method == 'POST':
@@ -26,12 +26,13 @@ def login_view(request):
             return redirect('dashboard')
         else:
             messages.error(request, 'Invalid username or password.')
-    return render(request, 'login.html')
+    return render(request, 'account/login.html')
 
 def logout_view(request):
     logout(request)
     return redirect('login')
 
+# @login_required(login_url='login')
 @login_required
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    return render(request, 'account/dashboard.html')

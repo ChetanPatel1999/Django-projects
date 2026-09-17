@@ -1,0 +1,92 @@
+
+{% extends "uploade/base.html" %}
+
+{% block content %}
+
+<div class="mb-8 text-center">
+
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
+        Uploaded Images
+    </h2>
+
+    <p class="text-gray-500 mt-2">
+        View all student uploaded images
+    </p>
+
+</div>
+
+
+{% if files %}
+
+    <!-- Image Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+        {% for file in files %}
+
+            <!-- Image Card -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md
+                        hover:shadow-xl hover:-translate-y-1
+                        transition duration-300">
+
+                <!-- Image -->
+                <div class="h-56 bg-gray-100 overflow-hidden">
+
+                    <img src="{{ file.image.url }}"
+                         alt="{{ file.name }}"
+                         class="w-full h-full object-cover
+                                hover:scale-105 transition duration-300">
+
+                </div>
+
+
+                <!-- Card Content -->
+                <div class="p-4">
+
+                    <h3 class="text-lg font-semibold text-gray-800 truncate">
+                        {{ file.name }}
+                    </h3>
+
+                    <p class="text-sm text-gray-500 mt-1">
+                        Uploaded Image
+                    </p>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{% else %}
+
+    <!-- Empty State -->
+    <div class="bg-white rounded-2xl shadow-md p-10 text-center max-w-lg mx-auto">
+
+        <div class="text-6xl mb-4">
+            📷
+        </div>
+
+        <h3 class="text-2xl font-bold text-gray-800">
+            No Images Found
+        </h3>
+
+        <p class="text-gray-500 mt-2 mb-6">
+            No images have been uploaded yet.
+        </p>
+
+        <a href="{% url 'upload_file' %}"
+           class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg
+                  font-semibold hover:bg-blue-700
+                  transition duration-300 shadow-md">
+
+            Upload Image
+
+        </a>
+
+    </div>
+
+{% endif %}
+
+{% endblock %}
+

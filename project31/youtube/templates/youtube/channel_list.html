@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <h1 class="text-3xl font-bold underline">Channel List</h1>
+    <table class="table-auto border-collapse border border-slate-400 bg-blue-50">
+        <thead>
+            <tr>
+                <th class="border border-slate-300">Channel Name</th>
+                <th class="border border-slate-300">Description</th>
+                <th class="border border-slate-300">Subscribers</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for channel in channels %}
+            <tr>
+                <td class="border border-slate-300">{{ channel.channel_name }}</td>
+                <td class="border border-slate-300">{{ channel.description }}</td>
+                <td class="border border-slate-300">{{ channel.subscribers }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</body>
+
+</html>

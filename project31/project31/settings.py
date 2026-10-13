@@ -15,7 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+print("this is out :- ",BASE_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'project31.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load cache %}
 
 <head>
     <meta charset="UTF-8">
@@ -8,9 +9,19 @@
 </head>
 
 <body>
+    <h1>Welocme to hello world institute</h1>
+    <h1>Channel List</h1>
+    {% cache 60 channel_list %}
     <h1>{{ channel.name }}</h1>
     <p>{{ channel.description }}</p>
     <p>Subscribers: {{ channel.subscribers_count }}</p>
+    {% endcache %}
+    <form method="post" action="#">
+        {% csrf_token %}
+        name <input type="text" name="name" required>
+        description <input type="text" name="description" required>
+        <button type="submit">Delete Cache</button>
+    </form>
 </body>
 
 </html>

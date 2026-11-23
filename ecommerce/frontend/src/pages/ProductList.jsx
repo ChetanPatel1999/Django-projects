@@ -22,11 +22,14 @@ const ProductList = () => {
     }, [])
 
     if (loading) {
-        return <div>Loading...</div>
+        return <div className="flex flex-col items-center justify-center h-screen gap-4">
+            <div className=" w-40 h-40 border-12 rounded-full border-gray-200 border-t-black animate-spin"></div>
+            <p className="font-bold">Loading...</p>
+        </div>
     }
 
     if (error) {
-        return <div>Error: {error.message}</div>
+        return <div className="text-center text-red-500">Error: {error.message}</div>
     }
 
     return (

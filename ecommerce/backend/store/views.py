@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-from .models import Product, Category   
-from .serializers import ProductSerializer, CategorySerializer
+from .models import Product, Category ,Cart, CartItem
+from .serializers import ProductSerializer, CategorySerializer, CartSerializer, CartItemSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -27,5 +27,23 @@ def get_categories(request):
     categories = Category.objects.all()
     serializer = CategorySerializer(categories, many=True)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_cart(request):
+    cart,created = Cart.objects.get_or_create(user=None)
+    serializer = CartSerializer(cart)
+    return Response(serializer.data)
+
+@api_view(['POST'])
+def add_to_cart(request):
+    product_id = request.data.get('product_id')
+    product = Product.objects.get(id=product_id)
+    cart, created = Cart.objects.get_or_create(user=None)
+    cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save()
+
 
 

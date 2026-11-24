@@ -45,3 +45,25 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} x {self.product.name} in Order {self.order.id}"
+
+class Cart(models.Model):
+    user = models.OneToOneField(User, related_name='cart', on_delete=models.CASCADE, null=True,blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Cart of {self.user.username}" if self.user else "Geust Cart"
+    @property
+    def total(self):
+        return sum(item.subtotal for item in self.items.all())
+
+class CartItem(models.Model):
+    cart = models.ForeignKey(Cart, related_name='items', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, related_name='cart_items', on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name} in Cart of {self.cart.user.username}"    
+
+    @property
+    def subtotal(self):
+        return self.quantity * self.product.price
